@@ -10,8 +10,8 @@ Download all the emojis you've ever sent inside messages on Discord. Skips dupli
 4. Download [`run.sh`](https://github.com/l1ving/discord-emoji-extractor/blob/master/run.sh)
 and [`extract_emojis.pl`](https://github.com/l1ving/discord-emoji-extractor/blob/master/extract_emojis.pl) to the messages directory.
 ```bash
-wget https://github.com/l1ving/discord-emoji-extractor/blob/master/run.sh
-wget https://github.com/l1ving/discord-emoji-extractor/blob/master/extract_emojis.pl
+wget https://github.com/l1ving/discord-emoji-extractor/raw/master/run.sh
+wget https://github.com/l1ving/discord-emoji-extractor/raw/master/extract_emojis.pl
 ```
 5. Make both scripts executable.
 ```bash
