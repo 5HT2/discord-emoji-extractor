@@ -5,7 +5,7 @@ Download all the emojis you've ever sent inside messages on Discord. Skips dupli
 ## Usage
 
 1. Download your Discord data backup. You can get this by going to Discord Settings > Privacy & safety > Request all of my data
-2. Extract this somewhere. Doesn't matter.
+2. Extract the data somewhere. Doesn't matter.
 3. `cd my_data/messages/`
 4. Download [`run.sh`](https://github.com/l1ving/discord-emoji-extractor/blob/master/run.sh)
 and [`extract_emojis.pl`](https://github.com/l1ving/discord-emoji-extractor/blob/master/extract_emojis.pl) to the messages directory.
