@@ -4,6 +4,7 @@
 [![CodeFactor](https://img.shields.io/codefactor/grade/github/l1ving/discord-emoji-extractor?logo=codefactor&logoColor=white)](https://www.codefactor.io/repository/github/l1ving/discord-emoji-extractor)
 
 Download all the emojis you've ever sent inside messages on Discord. Supports skipping duplicates and resuming downloads.
+![image](https://user-images.githubusercontent.com/17222512/133897865-45e69ee8-5214-43cf-87d8-01f96e43baac.png)
 
 ## Usage
 
