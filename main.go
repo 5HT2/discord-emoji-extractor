@@ -115,7 +115,7 @@ func downloadFile(filepath string, url string, current int, total int) error {
 	count := "(" + strconv.Itoa(current) + "/" + strconv.Itoa(total) + ")"
 	bar := progressbar.NewOptions(-1,
 		progressbar.OptionSetDescription("downloading emojis "+count),
-		progressbar.OptionSpinnerType(4),
+		progressbar.OptionSpinnerType(14),
 		progressbar.OptionShowBytes(true),
 	)
 
