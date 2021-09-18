@@ -97,6 +97,7 @@ func downloadAllEmojis(emojis []Emoji, dir string) {
 		}
 	}
 
+	fmt.Println("")
 	fmt.Printf("A total of %v emojis were downloaded\n", current)
 
 	if skipped != 0 {
@@ -117,6 +118,7 @@ func downloadFile(filepath string, url string, current int, total int) error {
 		progressbar.OptionFullWidth(),
 		progressbar.OptionSetDescription("downloading emojis "+count),
 		progressbar.OptionClearOnFinish(),
+		progressbar.OptionSpinnerType(4),
 	)
 
 	_, err := io.Copy(io.MultiWriter(f, bar), res.Body)
