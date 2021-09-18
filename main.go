@@ -84,6 +84,10 @@ func downloadAllEmojis(emojis []Emoji, dir string) {
 		}
 	}
 
+	if skipped != 0 {
+		fmt.Printf("Skipping %v emojis because they are already downloaded\n", skipped)
+	}
+
 	total := len(emojisToDownload)
 
 	// Download all missing emojis
@@ -95,13 +99,6 @@ func downloadAllEmojis(emojis []Emoji, dir string) {
 		if err != nil {
 			fmt.Printf("Error downloading emoji: %v\n", err)
 		}
-	}
-
-	fmt.Println("")
-	fmt.Printf("A total of %v emojis were downloaded\n", current)
-
-	if skipped != 0 {
-		fmt.Printf("Skipped %v emojis because they were already downloaded\n", skipped)
 	}
 }
 
@@ -115,10 +112,9 @@ func downloadFile(filepath string, url string, current int, total int) error {
 
 	count := "(" + strconv.Itoa(current) + "/" + strconv.Itoa(total) + ")"
 	bar := progressbar.NewOptions(-1,
-		progressbar.OptionFullWidth(),
 		progressbar.OptionSetDescription("downloading emojis "+count),
-		progressbar.OptionClearOnFinish(),
 		progressbar.OptionSpinnerType(4),
+		progressbar.OptionShowBytes(true),
 	)
 
 	_, err := io.Copy(io.MultiWriter(f, bar), res.Body)
