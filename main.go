@@ -25,9 +25,11 @@ var (
 )
 
 type Emoji struct {
-	animated bool
 	name     string
 	id       int
+	strId    string
+	filename string
+	ext      string
 }
 
 func main() {
@@ -57,7 +59,7 @@ func main() {
 	err := os.Mkdir(emojisDir, fileMode)
 	if err != nil && !strings.HasSuffix(err.Error(), "file exists") {
 		// The file exists error is fine to ignore
-		fmt.Printf("Error creating emojis directory: %v", err)
+		fmt.Printf("Error creating emojis directory: %v\n", err)
 		return
 	}
 
@@ -66,43 +68,60 @@ func main() {
 
 // downloadAllEmojis will download each emoji to messages/emojis/name-id.ext
 func downloadAllEmojis(emojis []Emoji, dir string) {
-	total := len(emojis)
+	emojisToDownload := make([]Emoji, 0)
 	current := 0
+	skipped := 0
 
+	// Make a list of non-downloaded emojis (not found on disk)
+	// These are split into two for loops to avoid messing with the download progress bar
 	for _, emoji := range emojis {
-		current += 1
-		id := strconv.Itoa(emoji.id)
-		ext := ".png"
-		if emoji.animated {
-			ext = ".gif"
-		}
-		fileName := emoji.name + "-" + id + ext
-		path := dir + fileName
+		path := dir + emoji.filename
 
 		if !checkFileExists(path) {
-			err := downloadFile(path, baseUrl+id+ext, current, total)
-			if err != nil {
-				fmt.Printf("Error downloading emoji: %v\n", err)
-			}
-		} // else, file is skipped when it exists
+			emojisToDownload = append(emojisToDownload, emoji)
+		} else {
+			skipped += 1
+		}
+	}
+
+	total := len(emojisToDownload)
+
+	// Download all missing emojis
+	for _, emoji := range emojisToDownload {
+		current += 1
+		path := dir + emoji.filename
+
+		err := downloadFile(path, baseUrl+emoji.strId+emoji.ext, current, total)
+		if err != nil {
+			fmt.Printf("Error downloading emoji: %v\n", err)
+		}
+	}
+
+	fmt.Printf("A total of %v emojis were downloaded\n", current)
+
+	if skipped != 0 {
+		fmt.Printf("Skipped %v emojis because they were already downloaded\n", skipped)
 	}
 }
 
 // downloadFile will download a given file from url, and display the progress
 func downloadFile(filepath string, url string, current int, total int) error {
 	req, _ := http.NewRequest("GET", url, nil)
-	resp, _ := http.DefaultClient.Do(req)
-	defer resp.Body.Close()
+	res, _ := http.DefaultClient.Do(req)
 
 	f, _ := os.OpenFile(filepath, os.O_CREATE|os.O_WRONLY, fileMode)
 	defer f.Close()
 
 	count := "(" + strconv.Itoa(current) + "/" + strconv.Itoa(total) + ")"
-	bar := progressbar.DefaultBytes(
-		-1,
-		"downloading emojis "+count,
+	bar := progressbar.NewOptions(-1,
+		progressbar.OptionFullWidth(),
+		progressbar.OptionSetDescription("downloading emojis "+count),
+		progressbar.OptionClearOnFinish(),
 	)
-	_, err := io.Copy(io.MultiWriter(f, bar), resp.Body)
+
+	_, err := io.Copy(io.MultiWriter(f, bar), res.Body)
+	defer res.Body.Close()
+
 	return err
 }
 
@@ -143,18 +162,20 @@ func extractUniqueEmojis(files []string) []Emoji {
 
 		// Parse all emojis in a message. emoji[0] is the full match, 1 is group 1 and so on
 		for _, emoji := range emojis {
-			animated := false
-			if len(emoji[1]) != 0 {
-				animated = true
-			}
-
 			id, err := strconv.Atoi(emoji[3])
 			if err != nil {
 				fmt.Printf("Error extracting emoji \"%s\": %v\n", emoji, err)
 				continue
 			}
 
-			parsedEmoji := Emoji{animated, emoji[2], id}
+			ext := ".png"
+			if len(emoji[1]) != 0 {
+				ext = ".gif"
+			}
+
+			filename := emoji[2] + "-" + emoji[3] + ext
+
+			parsedEmoji := Emoji{emoji[2], id, emoji[3], filename, ext}
 			parsedEmojis = append(parsedEmojis, parsedEmoji)
 		}
 	}
