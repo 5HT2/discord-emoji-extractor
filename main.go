@@ -247,8 +247,6 @@ func checkFileExists(path string) bool {
 		log.Printf("Error: %v", err)
 		panic(err)
 	}
-
-	return false // go requires we do something here
 }
 
 // formatDir will append a / to the end of a dir path if it is missing
