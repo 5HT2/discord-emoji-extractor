@@ -33,10 +33,12 @@ type Emoji struct {
 func main() {
 	flag.Parse()
 
+	// Let the user select a directory
 	dir := selectDir(true)
 	dir = formatDir(dir)
 	fmt.Printf("Searching directory \"%s\"\n", dir)
 
+	// Find all messages.csv files in said dir
 	validFiles := getFileList(dir)
 	validFilesAmt := len(validFiles)
 	fmt.Printf("Found %v %s files\n", validFilesAmt, msgFile)
@@ -50,6 +52,7 @@ func main() {
 
 	uniqueEmojis := extractUniqueEmojis(validFiles)
 
+	// Download all unique emojis found
 	emojisDir := dir + "emojis/"
 	err := os.Mkdir(emojisDir, fileMode)
 	if err != nil && !strings.HasSuffix(err.Error(), "file exists") {
@@ -61,6 +64,7 @@ func main() {
 	downloadAllEmojis(uniqueEmojis, emojisDir)
 }
 
+// downloadAllEmojis will download each emoji to messages/emojis/name-id.ext
 func downloadAllEmojis(emojis []Emoji, dir string) {
 	total := len(emojis)
 	current := 0
@@ -84,6 +88,7 @@ func downloadAllEmojis(emojis []Emoji, dir string) {
 	}
 }
 
+// downloadFile will download a given file from url, and display the progress
 func downloadFile(filepath string, url string, current int, total int) error {
 	req, _ := http.NewRequest("GET", url, nil)
 	resp, _ := http.DefaultClient.Do(req)
