@@ -1,0 +1,1 @@
+Running on directory "/home/liv/downloads/archive/discord_data_request/db_2021_08_22/messages/"
