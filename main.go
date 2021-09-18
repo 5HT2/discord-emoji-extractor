@@ -100,6 +100,8 @@ func downloadAllEmojis(emojis []Emoji, dir string) {
 			fmt.Printf("Error downloading emoji: %v\n", err)
 		}
 	}
+
+	fmt.Println("") // for whatever reason the bar doesn't do this for you
 }
 
 // downloadFile will download a given file from url, and display the progress
