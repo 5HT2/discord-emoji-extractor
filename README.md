@@ -18,7 +18,7 @@ make
 
 1. Download your Discord data backup. You can get this by going to Discord Settings > Privacy & safety > Request all of my data
 2. Extract the data somewhere. Doesn't matter.
-3. Follow the above [Usage](#Usage) instructions and run the program from anywhere.
+3. Follow the above [usage](#Usage) instructions and run the program from anywhere.
 4. Follow the interactive instructions. You can use the `-dir $DIR -dirconfirm` args with `DIR` set to a path to skip the prompts.
 5. At any point you may cancel downloading and re-run the program, and it will resume downloading.
 
