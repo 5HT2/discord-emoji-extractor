@@ -51,4 +51,11 @@ The Go version works similarly, but is much faster and supports cancelling and r
 
 ## Contributing and Improvements
 
-Feature-wise, maybe you could parse the events file to get emojis which you've also used as reactions? 
+Feature-wise, maybe you could parse the events file to get emojis which you've also used as reactions?
+
+A bot to dynamically upload to a bunch of selected servers (as per the default 50 emoji / server limit) and skip ones with the same name, would be neat. Bots have a stricted upload ratelimit than users, so letting it run in the background to wait out the timeout would be ideal.
+
+Possible command syntax could be
+```bash
+./extract -dir $DIR -dirconfirm -upload -token $TOKEN -serverids 96230004047740928,785362280601616406,343525052332900352
+```
