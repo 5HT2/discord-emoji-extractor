@@ -1,7 +1,7 @@
 # discord-emoji-extractor
 
-[![time tracker](https://wakatime.com/badge/github/l1ving/discord-emoji-extractor.svg)](https://wakatime.com/badge/github/l1ving/discord-emoji-extractor)
-[![CodeFactor](https://img.shields.io/codefactor/grade/github/l1ving/discord-emoji-extractor?logo=codefactor&logoColor=white)](https://www.codefactor.io/repository/github/l1ving/discord-emoji-extractor)
+[![time tracker](https://wakatime.com/badge/github/5HT2/discord-emoji-extractor.svg)](https://wakatime.com/badge/github/5HT2/discord-emoji-extractor)
+[![CodeFactor](https://img.shields.io/codefactor/grade/github/5HT2/discord-emoji-extractor?logo=codefactor&logoColor=white)](https://www.codefactor.io/repository/github/5HT2/discord-emoji-extractor)
 
 Download all the emojis you've ever sent inside messages on Discord. Supports skipping duplicates and resuming downloads.
 ![image](https://user-images.githubusercontent.com/17222512/133897865-45e69ee8-5214-43cf-87d8-01f96e43baac.png)
@@ -9,10 +9,10 @@ Download all the emojis you've ever sent inside messages on Discord. Supports sk
 ## Usage
 
 These instructions are for building to Go project. 
-The bash [equivalent](https://github.com/l1ving/discord-emoji-extractor/blob/master/extract.sh) does not need compiling.
+The bash [equivalent](https://github.com/5HT2/discord-emoji-extractor/blob/master/extract.sh) does not need compiling.
 
 ```bash
-git clone git@github.com:l1ving/discord-emoji-extractor.git
+git clone git@github.com:5HT2/discord-emoji-extractor.git
 cd discord-emoji-extractor
 make
 ./extract -h # Run the program with help arguments
@@ -31,9 +31,9 @@ make
 1. Download your Discord data backup. You can get this by going to Discord Settings > Privacy & safety > Request all of my data
 2. Extract the data somewhere. Doesn't matter.
 3. `cd my_data/messages/`
-4. Download [`extract.sh`](https://github.com/l1ving/discord-emoji-extractor/blob/master/extract.sh) to the `messages` directory.
+4. Download [`extract.sh`](https://github.com/5HT2/discord-emoji-extractor/blob/master/extract.sh) to the `messages` directory.
 ```bash
-wget https://github.com/l1ving/discord-emoji-extractor/raw/master/extract.sh
+wget https://github.com/5HT2/discord-emoji-extractor/raw/master/extract.sh
 ```
 5. Make the script executable.
 ```bash
