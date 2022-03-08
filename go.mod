@@ -1,4 +1,4 @@
-module github.com/l1ving/discord-emoji-extractor
+module github.com/5HT2/discord-emoji-extractor
 
 go 1.17
 
