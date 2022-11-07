@@ -21,7 +21,7 @@ var (
 	dirConfirm = flag.Bool("dirconfirm", false, "Automatically confirm dir is correct")
 	msgFile    = "messages.csv"
 	baseUrl    = "https://cdn.discordapp.com/emojis/"
-	fileMode   = os.FileMode(0644)
+	fileMode   = os.FileMode(0755)
 )
 
 type Emoji struct {
