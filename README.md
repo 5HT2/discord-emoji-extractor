@@ -1,6 +1,6 @@
 # discord-emoji-extractor
 
-[![time tracker](https://wakatime.com/badge/github/l1ving/discord-emoji-extractor.svg)](https://wakatime.com/badge/github/l1ving/discord-emoji-extractor)
+[![time tracker](https://wakatime.com/badge/github/5HT2/discord-emoji-extractor.svg)](https://wakatime.com/badge/github/5HT2/discord-emoji-extractor)
 [![CodeFactor](https://img.shields.io/codefactor/grade/github/5HT2/discord-emoji-extractor?logo=codefactor&logoColor=white)](https://www.codefactor.io/repository/github/5HT2/discord-emoji-extractor)
 
 Download all the emojis you've ever sent inside messages on Discord. Supports skipping duplicates and resuming downloads.
